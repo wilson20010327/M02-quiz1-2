@@ -1,2 +1,2 @@
-qSortArray: q-sort-array.c
-	gcc -o qSortArray q-sort-array.c
+qSortArray:	main.c q-sort-array.c
+	gcc -o main main.c q-sort-array.c
