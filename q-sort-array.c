@@ -1,4 +1,4 @@
-#include "createArray.h"
+#include "q-sort-array.h"
 
 void quickSortArray(int *array, int begin, int end)
 {
