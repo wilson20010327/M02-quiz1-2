@@ -1,9 +1,5 @@
 #include "quiz1.h"
-#include <assert.h>
-#include <stdbool.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
+
 /* Verify if list is order */
 static bool list_is_ordered(node_t *list)
 {

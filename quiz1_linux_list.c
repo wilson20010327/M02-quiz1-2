@@ -15,25 +15,33 @@ void list_construct(struct list_head *head, int n)
     list_add(&node->list, head);
 }
 // /* Verify if list is order */
-// static bool list_is_ordered(node_t *list)
-// {
+static bool list_is_ordered(struct list_head *head)
+{
+    element_t *cur, *safe;
+    list_for_each_entry_safe (cur, safe, head, list) {
+        if (&safe->list == head) {
+            break;
+        } else {
+            if (cur->value > safe->value)
+                return false;
+        }
+    }
+    return true;
+}
 
-//     return true;
-// }
+/* shuffle array, only work if n < RAND_MAX */
+void shuffle(int *array, size_t n)
+{
+    if (n <= 0)
+        return;
 
-// /* shuffle array, only work if n < RAND_MAX */
-// void shuffle(int *array, size_t n)
-// {
-//     if (n <= 0)
-//         return;
-
-//     for (size_t i = 0; i < n - 1; i++) {
-//         size_t j = i + rand() / (RAND_MAX / (n - i) + 1);
-//         int t = array[j];
-//         array[j] = array[i];
-//         array[i] = t;
-//     }
-// }
+    for (size_t i = 0; i < n - 1; i++) {
+        size_t j = i + rand() / (RAND_MAX / (n - i) + 1);
+        int t = array[j];
+        array[j] = array[i];
+        array[i] = t;
+    }
+}
 // void quick_sort(node_t **list)
 // {
 //     int n = list_length(list);
@@ -95,7 +103,7 @@ int main(int argc, char **argv)
     // print_list(list);
     // quick_sort(&list);
     // print_list(list);
-    // assert(list_is_ordered(list));
+    assert(list_is_ordered(&head));
     element_t *cur;
     list_for_each_entry (cur, &head, list)
         printf("%d ", cur->value);
