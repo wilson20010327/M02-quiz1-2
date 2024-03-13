@@ -1,6 +1,7 @@
 array
 quiz1
 quiz1_linux_list
+timsort
 *.o
 *.o.d
 *.dSYM
